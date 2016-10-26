@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ng2a.WebJobs", "Ng2a.WebJobs\Ng2a.WebJobs.csproj", "{62AEEAC6-ADF3-4FA1-823F-FA94DDA65FA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ng2a.UnitTests", "Ng2a.WebJobs.UnitTests\Ng2a.UnitTests.csproj", "{9A0ACA38-7092-4CBF-94E9-EAF45901FACB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Ng2a.WebApi", "Ng2a.WebApi\Ng2a.WebApi.xproj", "{244877D6-04B8-4BF0-86CF-9ADE84ACBFA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62AEEAC6-ADF3-4FA1-823F-FA94DDA65FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62AEEAC6-ADF3-4FA1-823F-FA94DDA65FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62AEEAC6-ADF3-4FA1-823F-FA94DDA65FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62AEEAC6-ADF3-4FA1-823F-FA94DDA65FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A0ACA38-7092-4CBF-94E9-EAF45901FACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A0ACA38-7092-4CBF-94E9-EAF45901FACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A0ACA38-7092-4CBF-94E9-EAF45901FACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A0ACA38-7092-4CBF-94E9-EAF45901FACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{244877D6-04B8-4BF0-86CF-9ADE84ACBFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{244877D6-04B8-4BF0-86CF-9ADE84ACBFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{244877D6-04B8-4BF0-86CF-9ADE84ACBFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{244877D6-04B8-4BF0-86CF-9ADE84ACBFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
