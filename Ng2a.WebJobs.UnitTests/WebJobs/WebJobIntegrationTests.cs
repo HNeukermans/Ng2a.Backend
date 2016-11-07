@@ -1,26 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 using System.IO;
-//using System.Drawing;
-//using System.Drawing.Imaging;
-//using System.Net.Sockets;
-//using System.Net.Http;
-//using System.Net.Http.Headers;
-//using System.Net;
-//using Microsoft.ProjectOxford.Face;
-//using Microsoft.ProjectOxford.Face.Contract;
-using Microsoft.ProjectOxford;
-using Microsoft.ProjectOxford.Face;
-using static System.Net.Mime.MediaTypeNames;
-using System.Drawing;
-using System.Drawing.Imaging;
-using Microsoft.ProjectOxford.Face.Contract;
-using ImplementWebJobs;
 
 namespace ImplementWebJobs.UnitTests
 {
