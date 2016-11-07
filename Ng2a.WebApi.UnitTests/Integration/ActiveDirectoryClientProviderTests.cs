@@ -10,13 +10,12 @@ using Xunit;
 
 namespace ImplementWebJobs.UnitTests.WebApi.Domain.Avatar
 {
-    //[TestClass]
     public class ActiveDirectoryClientProviderTests
     {
         [Fact]
         public async Task Get_Should_Return_Client()
         {
-            var settings = new ActiveDirectorySettings();
+            var settings = ActiveDirectorySettings.Production;
             var client = new ActiveDirectoryClientProvider(settings).Get();
         }
     }
