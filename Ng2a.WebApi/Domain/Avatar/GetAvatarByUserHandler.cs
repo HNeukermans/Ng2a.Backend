@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace Ng2Aa_demo.Domain.Avatar
 {
-    public class GetAvatarByUserHandler : IRequestHandler<GetAvatarByUser, Task<Tuple<string, Stream>>>
+    public class GetAvatarByUserHandler : IAsyncRequestHandler<GetAvatarByUser,Tuple<string, Stream>>
     {
         private InMemoryAvatarCache _cache;
 
         public GetAvatarByUserHandler(InMemoryAvatarCache cache) {
             _cache = cache;
-        }
+        }   
 
         public async Task<Tuple<string, Stream>> Handle(GetAvatarByUser request)
         {
-            var avatars = await _cache.Load();
+            var avatars = await _cache.Get();
 
             return avatars.Find(i => i.Item1 == request.UserName);
-        }        
+        }
     }
 }

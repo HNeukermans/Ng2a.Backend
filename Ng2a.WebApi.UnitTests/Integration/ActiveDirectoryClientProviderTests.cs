@@ -13,9 +13,9 @@ namespace ImplementWebJobs.UnitTests.WebApi.Domain.Avatar
     public class ActiveDirectoryClientProviderTests
     {
         [Fact]
-        public async Task Get_Should_Return_Client()
+        public void Get_Should_Return_Client()
         {
-            var settings = ActiveDirectorySettings.Production;
+            var settings = ActiveDirectory.GetProductionSettings();
             var client = new ActiveDirectoryClientProvider(settings).Get();
         }
     }

@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "Autofac.Extensions.DependencyInjection": "4.0.0",
+    "Autofac.Owin": "4.0.0",
     "MediatR": "2.1.0",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNet.SignalR.Core": "2.2.1",
+    "Microsoft.AspNetCore.Diagnostics": "1.1.0-preview1-final",
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.AspNetCore.Owin": "1.0.0",
     "Microsoft.AspNetCore.Routing": "1.0.1",
@@ -21,7 +24,8 @@
     "Microsoft.Owin": "3.0.1",
     "Microsoft.Owin.Cors": "3.0.1",
     "StructureMap": "4.4.1",
-    "System.Linq": "4.1.0"
+    "System.Linq": "4.1.0",
+    "System.Runtime.WindowsRuntime": "4.0.10"
   },
 
   "tools": {
@@ -31,9 +35,14 @@
   "frameworks": {
     "net452": {
       "frameworkAssemblies": {
+        "PresentationCore": "4.0.0.0",
+        "System.Drawing": "4.0.0.0",
+        "System.Drawing.Design": "4.0.0.0",
         "System.Net": "4.0.0.0",
         "System.Net.Http": "4.0.0.0",
-        "System.Net.Http.WebRequest": "4.0.0.0"
+        "System.Net.Http.WebRequest": "4.0.0.0",
+        "System.Windows": "4.0.0.0",
+        "WindowsBase": "4.0.0.0"
       }
     }
   },
