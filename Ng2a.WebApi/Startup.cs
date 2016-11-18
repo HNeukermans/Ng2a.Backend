@@ -65,7 +65,8 @@ namespace Ng2Aa_demo
             // be sure to keep a reference to it as a property or field.
             builder.Register(c => CreateActiveDirectoryClient()).AsSelf();
             builder.RegisterType<InMemoryAvatarCache>().AsSelf();
-            builder.RegisterType<GetAvatarByUserHandler>().AsSelf();
+            builder.RegisterModule<MediatorModule>();
+            //builder.RegisterType<GetAvatarByUserHandler>().AsSelf();
             builder.Populate(services);
             this.ApplicationContainer = builder.Build();
 

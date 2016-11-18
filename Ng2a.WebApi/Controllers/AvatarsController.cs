@@ -24,11 +24,10 @@ namespace Ng2Aa_demo.Controllers
         //    _mediator = mediator;
         //}
 
-        public AvatarsController(GetAvatarByUserHandler h)
+        public AvatarsController(Mediator mediator)
         {
-            // _mediator = mediator;
+             _mediator = mediator;
         }
-
 
         [HttpGet]
         public async Task<HttpResponseMessage> Get()
