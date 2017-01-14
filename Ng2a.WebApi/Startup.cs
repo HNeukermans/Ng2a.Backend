@@ -12,6 +12,8 @@ using System.IO;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNet.SignalR;
 using Ng2Aa_demo.Hubs;
+using Microsoft.Owin.Cors;
+using Microsoft.Owin.Security.DataProtection;
 
 namespace Ng2Aa_demo
 {
@@ -53,41 +55,102 @@ namespace Ng2Aa_demo
 
             app.UseAppBuilder(appBuilder =>
             {
-                appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+                appBuilder.SetDataProtectionProvider(new MachineKeyProtectionProvider());
+
+                appBuilder.Map("/signalr", map =>
+                {
+                    // Setup the CORS middleware to run before SignalR.
+                    // By default this will allow all origins. You can 
+                    // configure the set of origins and/or http verbs by
+                    // providing a cors options with a different policy.
+                    
+                    //http://ng2a-hneu-web-ui.azurewebsites.net
+                    var corsOptions = new Microsoft.Owin.Cors.CorsOptions
+                    {
+                        PolicyProvider = new CorsPolicyProvider
+                        {
+                            PolicyResolver = context => ResolvePolicy()
+                        }
+                    };
+                    map.UseCors(corsOptions);
+                    //map.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+                    var hubConfiguration = new HubConfiguration
+                    {
+                        // You can enable JSONP by uncommenting line below.
+                        // JSONP requests are insecure but some older browsers (and some
+                        // versions of IE) require JSONP to work cross domain
+                        // EnableJSONP = true
+                        EnableDetailedErrors = true
+                    };
+                    // Run the SignalR pipeline. We're not using MapSignalR
+                    // since this branch already runs under the "/signalr"
+                    // path.
+                    map.RunSignalR(hubConfiguration);
+                });
+                //var options = new CorsOptions();
+                //options.AddPolicy("", new )
+                //appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             });
 
+            
+            app.UseApplicationInsightsRequestTelemetry();
 
-            // app.UseApplicationInsightsRequestTelemetry();
-
-            // app.UseApplicationInsightsExceptionTelemetry();
+            app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseMvc();
 
-            //app.Use(async (context, next) =>
-            //{
-            //    await next();
-
-            //    if (context.Response.StatusCode == 404
-            //        && !Path.HasExtension(context.Request.Path.Value))
-            //    {
-            //        context.Request.Path = "/index.html";
-            //        await next();
-            //    }
-            //});
 
             GlobalHost.HubPipeline.AddModule(new LoggingPipelineModule());
 
             app.UseStaticFiles();
-
-            app.UseAppBuilder(appBuilder =>
-            {
-                //create SignalR JavaScript Library  and expose it over signalr/hubs url
-                var hubConfiguration = new HubConfiguration();
-                hubConfiguration.EnableDetailedErrors = true;
-                appBuilder.MapSignalR(hubConfiguration);
-                //appBuilder.MapHubs();
-            });
         }
+
+        private Task<System.Web.Cors.CorsPolicy> ResolvePolicy() {
+
+            var corsPolicy = new System.Web.Cors.CorsPolicy()
+            {
+                AllowAnyMethod = true,
+                AllowAnyHeader = true,
+                SupportsCredentials = true
+            };
+            
+            corsPolicy.Origins.Add("http://ng2a-hneu-web-ui.azurewebsites.net");
+            corsPolicy.Origins.Add("http://localhost:3000");
+
+            return Task.FromResult(corsPolicy);
+        }
+
+        internal class MachineKeyProtectionProvider : IDataProtectionProvider
+        {
+            public IDataProtector Create(params string[] purposes)
+            {
+                return new MachineKeyDataProtector(purposes);
+            }
+        }
+
+        internal class MachineKeyDataProtector : IDataProtector
+        {
+            private readonly string[] _purposes;
+
+            public MachineKeyDataProtector(string[] purposes)
+            {
+                _purposes = purposes;
+            }
+
+            public byte[] Protect(byte[] userData)
+            {
+                //return MachineKey.Protect(userData, _purposes);
+                return userData;
+            }
+
+            public byte[] Unprotect(byte[] protectedData)
+            {
+                //return System.Web.Security.MachineKey.Unprotect(protectedData, _purposes);
+                return protectedData;
+            }
+        }
+
+
 
 
     }

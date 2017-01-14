@@ -11,12 +11,12 @@ namespace Ng2Aa_demo.Hubs
     {
         protected override bool OnBeforeIncoming(IHubIncomingInvokerContext context)
         {
-            Debug.WriteLine("=> Invoking " + context.MethodDescriptor.Name + " on hub " + context.MethodDescriptor.Hub.Name);
+            Trace.TraceInformation("=> Invoking " + context.MethodDescriptor.Name + " on hub " + context.MethodDescriptor.Hub.Name);
             return base.OnBeforeIncoming(context);
         }
         protected override bool OnBeforeOutgoing(IHubOutgoingInvokerContext context)
         {
-            Debug.WriteLine("<= Invoking " + context.Invocation.Method + " on client hub " + context.Invocation.Hub);
+            Trace.TraceInformation("<= Invoking " + context.Invocation.Method + " on client hub " + context.Invocation.Hub);
             return base.OnBeforeOutgoing(context);
         }
     }

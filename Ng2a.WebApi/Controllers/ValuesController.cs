@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace Ng2Aa_demo.Controllers
 {
@@ -13,6 +14,7 @@ namespace Ng2Aa_demo.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            Trace.TraceInformation("ValuesController.Get");
             return new string[] { "value1", "value2" };
         }
 
@@ -20,6 +22,7 @@ namespace Ng2Aa_demo.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            Trace.TraceInformation("ValuesController.GetById");
             return "value";
         }
 

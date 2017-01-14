@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ng2Aa_demo.Hubs
 {
-    [HubName("ChatAppHub")]
+    [HubName("chatapphub")]
     public class ChatAppHub : Hub
     {
         private readonly static ConnectionsPerUser _connectionsPerUser =
@@ -16,8 +16,12 @@ namespace Ng2Aa_demo.Hubs
 
         public override Task OnConnected() {
 
+            Trace.TraceInformation("ChatAppHub.OnConnected");
+
             var user = Context.QueryString["user"];
-            
+
+            Trace.TraceInformation("user : " + user);
+
             Debug.WriteLine("OnConnected. User: {0}", user);
             var hasUser = _connectionsPerUser.HasUser(user);
             _connectionsPerUser.Add(user, Context.ConnectionId);
